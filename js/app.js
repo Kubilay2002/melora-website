@@ -5,31 +5,133 @@
 
 
 /* =====================================================
-   LOAD CART
+   STORAGE
    ===================================================== */
 
-let cart =
-  JSON.parse(
-    localStorage.getItem("meloraCart")
-  ) || [];
+const CART_KEY = "meloraCart";
 
 
-/* =====================================================
-   SAVE CART
-   ===================================================== */
+function loadCart() {
+
+  /* ---------- localStorage ---------- */
+
+  try {
+
+    const saved =
+      localStorage.getItem(CART_KEY);
+
+    if (saved) {
+
+      return JSON.parse(saved);
+
+    }
+
+  } catch (error) {
+
+    console.log(
+      "localStorage nicht verfügbar"
+    );
+
+  }
+
+
+  /* ---------- Cookie fallback ---------- */
+
+  try {
+
+    const cookies =
+      document.cookie.split(";");
+
+    const cookie =
+      cookies.find(
+        item =>
+          item.trim()
+            .startsWith(CART_KEY + "=")
+      );
+
+    if (cookie) {
+
+      const value =
+        cookie
+          .split("=")
+          .slice(1)
+          .join("=");
+
+      return JSON.parse(
+        decodeURIComponent(value)
+      );
+
+    }
+
+  } catch (error) {
+
+    console.log(
+      "Cookie-Speicher nicht verfügbar"
+    );
+
+  }
+
+
+  return [];
+
+}
+
+
 
 function saveCart() {
 
-  localStorage.setItem(
-    "meloraCart",
-    JSON.stringify(cart)
-  );
+  const data =
+    JSON.stringify(cart);
+
+
+  /* ---------- localStorage ---------- */
+
+  try {
+
+    localStorage.setItem(
+      CART_KEY,
+      data
+    );
+
+  } catch (error) {
+
+    console.log(
+      "localStorage konnte nicht gespeichert werden"
+    );
+
+  }
+
+
+  /* ---------- Cookie ---------- */
+
+  try {
+
+    document.cookie =
+      CART_KEY +
+      "=" +
+      encodeURIComponent(data) +
+      "; path=/; max-age=2592000; SameSite=Lax";
+
+  } catch (error) {
+
+    console.log(
+      "Cookie konnte nicht gespeichert werden"
+    );
+
+  }
 
 }
 
 
 /* =====================================================
-   ADD PRODUCT
+   CART
+   ===================================================== */
+
+let cart = loadCart();
+
+
+/* =====================================================
+   ADD
    ===================================================== */
 
 function add(name, price) {
@@ -67,7 +169,7 @@ function add(name, price) {
 
 
 /* =====================================================
-   REMOVE ONE PRODUCT
+   DECREASE
    ===================================================== */
 
 function decrease(name) {
@@ -102,7 +204,7 @@ function decrease(name) {
 
 
 /* =====================================================
-   REMOVE PRODUCT COMPLETELY
+   REMOVE
    ===================================================== */
 
 function removeItem(name) {
@@ -147,9 +249,7 @@ function updateCart() {
   }
 
 
-  /* -----------------------------------------------------
-     EMPTY CART
-     ----------------------------------------------------- */
+  /* ---------- EMPTY ---------- */
 
   if (cart.length === 0) {
 
@@ -172,9 +272,7 @@ function updateCart() {
   }
 
 
-  /* -----------------------------------------------------
-     CALCULATE TOTAL
-     ----------------------------------------------------- */
+  /* ---------- PRODUCTS ---------- */
 
   let total = 0;
 
@@ -186,7 +284,6 @@ function updateCart() {
 
   cart.forEach(product => {
 
-
     const productTotal =
       product.price *
       product.quantity;
@@ -194,12 +291,9 @@ function updateCart() {
 
     total += productTotal;
 
-    itemCount += product.quantity;
+    itemCount +=
+      product.quantity;
 
-
-    /* ---------------------------------------------------
-       CART ITEM
-       --------------------------------------------------- */
 
     const item =
       document.createElement("div");
@@ -218,17 +312,12 @@ function updateCart() {
         </h4>
 
         <p>
-
           ${product.price
             .toFixed(2)
             .replace(".", ",")} €
-
           ×
-
           ${product.quantity}
-
         </p>
-
 
         <button
           onclick="decrease('${product.name}')">
@@ -236,7 +325,6 @@ function updateCart() {
           − weniger
 
         </button>
-
 
         <button
           onclick="removeItem('${product.name}')">
@@ -246,7 +334,6 @@ function updateCart() {
         </button>
 
       </div>
-
 
       <strong>
 
@@ -264,17 +351,13 @@ function updateCart() {
   });
 
 
-  /* -----------------------------------------------------
-     CART COUNT
-     ----------------------------------------------------- */
+  /* ---------- COUNT ---------- */
 
   countElement.textContent =
     itemCount;
 
 
-  /* -----------------------------------------------------
-     TOTAL
-     ----------------------------------------------------- */
+  /* ---------- TOTAL ---------- */
 
   totalElement.textContent =
     total
@@ -286,7 +369,7 @@ function updateCart() {
 
 
 /* =====================================================
-   OPEN / CLOSE CART
+   OPEN / CLOSE
    ===================================================== */
 
 function toggleCart() {
@@ -305,10 +388,6 @@ function toggleCart() {
 }
 
 
-/* =====================================================
-   OPEN CART
-   ===================================================== */
-
 function openCart() {
 
   const cartElement =
@@ -326,6 +405,28 @@ function openCart() {
 
 
 /* =====================================================
+   RELOAD CART
+   ===================================================== */
+
+function reloadCart() {
+
+  const savedCart =
+    loadCart();
+
+
+  if (Array.isArray(savedCart)) {
+
+    cart = savedCart;
+
+  }
+
+
+  updateCart();
+
+}
+
+
+/* =====================================================
    INITIALIZE
    ===================================================== */
 
@@ -333,7 +434,21 @@ document.addEventListener(
   "DOMContentLoaded",
   function () {
 
-    updateCart();
+    reloadCart();
+
+  }
+);
+
+
+/* =====================================================
+   SAFARI / PAGE CACHE
+   ===================================================== */
+
+window.addEventListener(
+  "pageshow",
+  function () {
+
+    reloadCart();
 
   }
 );
