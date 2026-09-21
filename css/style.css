@@ -1,1663 +1,893 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap');
 
-
-/* =====================================================
-   VARIABLES
-   ===================================================== */
-
 :root {
-
   --cream: #f5f1ea;
   --paper: #fbfaf7;
   --warm: #e9e1d5;
-
   --ink: #211f1b;
   --muted: #777169;
-
   --line: #ddd6cc;
-
   --white: #ffffff;
-
 }
-
-
-/* =====================================================
-   RESET
-   ===================================================== */
 
 * {
-
   box-sizing: border-box;
-
   margin: 0;
-
   padding: 0;
-
 }
-
 
 html {
-
   scroll-behavior: smooth;
-
 }
-
 
 body {
-
   background: var(--paper);
-
   color: var(--ink);
-
   font-family: "Inter", sans-serif;
-
   font-weight: 300;
-
   line-height: 1.6;
-
 }
-
 
 a {
-
   color: inherit;
-
   text-decoration: none;
-
 }
-
 
 button,
 input {
-
   font: inherit;
-
 }
-
-
-/* =====================================================
-   HEADER
-   ===================================================== */
 
 .site-header {
-
   position: sticky;
-
   top: 0;
-
   z-index: 100;
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   gap: 30px;
-
   padding: 22px 5%;
-
   background: rgba(251, 250, 247, 0.94);
-
   backdrop-filter: blur(14px);
-
   border-bottom: 1px solid rgba(221, 214, 204, 0.7);
-
 }
-
 
 .brand {
-
   font-family: "Cormorant Garamond", serif;
-
   font-size: 32px;
-
   font-weight: 600;
-
   letter-spacing: 3px;
-
   line-height: 0.8;
-
 }
-
 
 .brand small {
-
   display: block;
-
   margin-top: 7px;
-
   font-family: "Inter", sans-serif;
-
   font-size: 8px;
-
   font-weight: 500;
-
   letter-spacing: 5px;
-
   text-align: center;
-
 }
-
 
 nav {
-
   display: flex;
-
   gap: 34px;
-
 }
-
 
 nav a {
-
   font-size: 13px;
-
   letter-spacing: 0.5px;
-
   transition: opacity 0.2s ease;
-
 }
-
 
 nav a:hover {
-
   opacity: 0.5;
-
 }
-
 
 .cart-toggle {
-
   border: 0;
-
   background: transparent;
-
   cursor: pointer;
-
   font-size: 13px;
-
   letter-spacing: 0.4px;
-
 }
-
 
 .cart-toggle span {
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-width: 21px;
-
   height: 21px;
-
   margin-left: 6px;
-
   border: 1px solid var(--ink);
-
   border-radius: 50%;
-
   font-size: 11px;
-
 }
-
-
-/* =====================================================
-   TYPOGRAPHY
-   ===================================================== */
 
 .eyebrow {
-
   margin-bottom: 15px;
-
   color: var(--muted);
-
   font-size: 10px;
-
   font-weight: 500;
-
   letter-spacing: 3px;
-
   text-transform: uppercase;
-
 }
-
 
 h1,
 h2,
 h3 {
-
   font-family: "Cormorant Garamond", serif;
-
   font-weight: 500;
-
 }
-
 
 h1 {
-
   font-size: clamp(52px, 7vw, 92px);
-
   line-height: 0.92;
-
 }
-
 
 h2 {
-
   font-size: clamp(42px, 5vw, 68px);
-
   line-height: 0.95;
-
 }
-
 
 h3 {
-
   font-size: 28px;
-
   line-height: 1;
-
 }
-
 
 em {
-
   font-weight: 400;
-
 }
-
-
-/* =====================================================
-   BUTTON
-   ===================================================== */
 
 .button {
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-height: 52px;
-
   padding: 0 28px;
-
   background: var(--ink);
-
   color: var(--white);
-
   border: 1px solid var(--ink);
-
   font-size: 12px;
-
   font-weight: 500;
-
   letter-spacing: 1px;
-
   cursor: pointer;
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
-
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
-
 
 .button:hover {
-
   background: transparent;
-
   color: var(--ink);
-
 }
-
 
 .button:active {
-
   transform: translateY(1px);
-
 }
-
 
 .button.full {
-
   width: 100%;
-
 }
 
-
-/* =====================================================
-   HERO
-   ===================================================== */
+/* HERO */
 
 .hero {
-
   min-height: 78vh;
-
   display: flex;
-
   align-items: center;
-
   padding: 80px 7%;
-
   background:
-    linear-gradient(
-      90deg,
-      rgba(20, 18, 15, 0.56),
-      rgba(20, 18, 15, 0.08)
-    ),
+    linear-gradient(90deg, rgba(20,18,15,0.56), rgba(20,18,15,0.08)),
     url("https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=2000&q=90")
     center / cover no-repeat;
-
   color: white;
-
 }
-
 
 .hero-copy {
-
   max-width: 720px;
-
 }
-
 
 .hero .eyebrow {
-
   color: rgba(255,255,255,0.75);
-
 }
-
 
 .hero h1 {
-
   margin-bottom: 30px;
-
 }
-
 
 .lead {
-
   max-width: 530px;
-
   margin-bottom: 35px;
-
   font-size: 16px;
-
   line-height: 1.8;
-
   color: rgba(255,255,255,0.88);
-
 }
 
-
-/* =====================================================
-   SECTIONS
-   ===================================================== */
+/* SECTIONS */
 
 .section {
-
   padding: 120px 7%;
-
 }
-
 
 .section-intro {
-
   max-width: 680px;
-
   margin-bottom: 55px;
-
 }
-
 
 .section-intro h2 {
-
   margin-bottom: 25px;
-
 }
-
 
 .section-intro > p:last-child {
-
   color: var(--muted);
-
 }
 
-
-/* =====================================================
-   CATEGORIES
-   ===================================================== */
+/* CATEGORIES */
 
 .categories {
-
   display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-
 }
-
 
 .category-card {
-
   display: block;
-
   overflow: hidden;
-
 }
 
-
 .category-image {
-
   position: relative;
-
   min-height: 540px;
-
   background-position: center;
-
   background-size: cover;
-
   transition: transform 0.6s ease;
-
 }
 
-
-.category-card:hover
-.category-image {
-
+.category-card:hover .category-image {
   transform: scale(1.025);
-
 }
-
 
 .floral-image,
 .product-one {
-
   background-image:
     url("https://images.unsplash.com/photo-1602523961358-f9f03dd557db?auto=format&fit=crop&w=1400&q=90");
-
 }
-
 
 .woody-image,
 .product-two {
-
   background-image:
     url("https://images.unsplash.com/photo-1602874801006-e26d3fbead2b?auto=format&fit=crop&w=1400&q=90");
-
 }
-
 
 .fruity-image,
 .product-three {
-
   background-image:
     url("https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1400&q=90");
-
 }
-
 
 .category-overlay {
-
   position: absolute;
-
   inset: 0;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: flex-end;
-
   padding: 35px;
-
-  background:
-    linear-gradient(
-      transparent 35%,
-      rgba(0,0,0,0.58)
-    );
-
+  background: linear-gradient(transparent 35%, rgba(0,0,0,0.58));
   color: white;
-
 }
-
 
 .category-overlay p {
-
   margin-bottom: 8px;
-
   font-size: 9px;
-
   letter-spacing: 2px;
-
 }
-
 
 .category-overlay h3 {
-
   font-size: 42px;
-
   margin-bottom: 5px;
-
 }
-
 
 .category-overlay span {
-
   font-size: 12px;
-
   opacity: 0.85;
-
 }
 
-
-/* =====================================================
-   FEATURES
-   ===================================================== */
+/* FEATURES */
 
 .features {
-
   display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--line);
-
   border-bottom: 1px solid var(--line);
-
 }
-
 
 .feature {
-
   padding: 45px 30px;
-
   text-align: center;
-
   border-right: 1px solid var(--line);
-
 }
-
 
 .feature:last-child {
-
   border-right: 0;
-
 }
-
 
 .feature span {
-
   display: block;
-
   margin-bottom: 12px;
-
   font-size: 24px;
-
 }
-
 
 .feature h3 {
-
   margin-bottom: 8px;
-
   font-size: 23px;
-
 }
-
 
 .feature p {
-
   color: var(--muted);
-
   font-size: 12px;
-
 }
 
-
-/* =====================================================
-   PRODUCTS
-   ===================================================== */
+/* PRODUCTS */
 
 .products {
-
   display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
+  grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-
 }
-
 
 .product {
-
   min-width: 0;
-
 }
-
 
 .product-link {
-
   display: block;
-
 }
 
-
 .product-image {
-
   aspect-ratio: 0.82;
-
   background-position: center;
-
   background-size: cover;
-
   transition: transform 0.5s ease;
-
 }
 
-
-.product-link:hover
-.product-image {
-
+.product-link:hover .product-image {
   transform: scale(1.015);
-
 }
-
 
 .product-info {
-
   display: flex;
-
   justify-content: space-between;
-
   gap: 20px;
-
   padding: 22px 0 17px;
-
 }
-
 
 .product-info h3 {
-
   font-size: 29px;
-
   margin-bottom: 7px;
-
 }
-
 
 .product-info p {
-
   color: var(--muted);
-
   font-size: 12px;
-
 }
-
 
 .product-info strong {
-
   white-space: nowrap;
-
   font-size: 13px;
-
   font-weight: 500;
-
 }
-
 
 .product > button {
-
   width: 100%;
-
   min-height: 48px;
-
   border: 1px solid var(--ink);
-
   background: transparent;
-
   cursor: pointer;
-
   font-size: 11px;
-
   font-weight: 500;
-
   letter-spacing: 1px;
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease;
-
+  transition: background 0.25s ease, color 0.25s ease;
 }
-
 
 .product > button:hover {
-
   background: var(--ink);
-
   color: white;
-
 }
 
-
-/* =====================================================
-   STORY
-   ===================================================== */
+/* STORY */
 
 .story {
-
   display: grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  grid-template-columns: 1fr 1fr;
   min-height: 650px;
-
   background: var(--cream);
-
 }
 
-
 .story-image {
-
   min-height: 550px;
-
   background:
     url("https://images.unsplash.com/photo-1608181831718-c9e4f2f9e0ef?auto=format&fit=crop&w=1400&q=90")
     center / cover no-repeat;
-
 }
-
 
 .story-copy {
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   padding: 80px 9%;
-
 }
-
 
 .story-copy h2 {
-
   margin-bottom: 35px;
-
 }
-
 
 .story-copy p:not(.eyebrow) {
-
   max-width: 480px;
-
   margin-bottom: 18px;
-
   color: var(--muted);
-
 }
 
-
-/* =====================================================
-   INSTAGRAM
-   ===================================================== */
+/* INSTAGRAM */
 
 .instagram {
-
   padding: 120px 7%;
-
   text-align: center;
-
 }
-
 
 .instagram h2 {
-
   margin-bottom: 20px;
-
 }
-
 
 .instagram > p:not(.eyebrow) {
-
   margin-bottom: 30px;
-
   color: var(--muted);
-
 }
 
-
-/* =====================================================
-   NEWSLETTER
-   ===================================================== */
+/* NEWSLETTER */
 
 .newsletter {
-
   padding: 110px 7%;
-
   background: var(--cream);
-
   text-align: center;
-
 }
-
 
 .newsletter h2 {
-
   margin-bottom: 22px;
-
 }
-
 
 .newsletter > p:not(.eyebrow) {
-
   max-width: 550px;
-
   margin: 0 auto 30px;
-
   color: var(--muted);
-
 }
-
 
 .newsletter form {
-
   display: flex;
-
   max-width: 540px;
-
   margin: auto;
-
 }
-
 
 .newsletter input {
-
   flex: 1;
-
   min-width: 0;
-
   padding: 0 18px;
-
   border: 1px solid var(--line);
-
   background: white;
-
   outline: none;
-
 }
-
 
 .newsletter input:focus {
-
   border-color: var(--ink);
-
 }
 
-
-/* =====================================================
-   CART
-   ===================================================== */
+/* CART */
 
 .cart {
-
   position: fixed;
-
   top: 0;
-
   right: 0;
-
   z-index: 300;
-
   width: min(440px, 92vw);
-
   height: 100vh;
-
   padding: 45px 35px;
-
   overflow-y: auto;
-
   background: var(--paper);
-
   box-shadow: -20px 0 60px rgba(0,0,0,0.12);
-
   transform: translateX(110%);
-
   transition: transform 0.35s ease;
-
 }
-
 
 .cart.open {
-
   transform: translateX(0);
-
 }
-
 
 .cart .close {
-
   position: absolute;
-
   top: 25px;
-
   right: 28px;
-
   border: 0;
-
   background: transparent;
-
   font-size: 32px;
-
   font-weight: 200;
-
   cursor: pointer;
-
 }
-
 
 .cart h2 {
-
   margin-bottom: 35px;
-
   font-size: 45px;
-
 }
-
 
 .cart-item {
-
   display: flex;
-
   justify-content: space-between;
-
   gap: 20px;
-
   padding: 20px 0;
-
   border-bottom: 1px solid var(--line);
-
 }
-
 
 .cart-item h4 {
-
   margin-bottom: 5px;
-
   font-family: "Cormorant Garamond", serif;
-
   font-size: 23px;
-
   font-weight: 500;
-
 }
-
 
 .cart-item p {
-
   margin-bottom: 10px;
-
   color: var(--muted);
-
   font-size: 12px;
-
 }
-
 
 .cart-item button {
-
   margin-right: 8px;
-
   padding: 0;
-
   border: 0;
-
   background: transparent;
-
   color: var(--muted);
-
   cursor: pointer;
-
   font-size: 10px;
-
 }
-
 
 .total {
-
   display: flex;
-
   justify-content: space-between;
-
   padding: 25px 0;
-
   margin-top: 15px;
-
   border-top: 1px solid var(--line);
-
   font-size: 14px;
-
 }
-
 
 .demo-note {
-
   margin-top: 20px;
-
   color: var(--muted);
-
   font-size: 11px;
-
   line-height: 1.6;
-
   text-align: center;
-
 }
 
-
-/* =====================================================
-   PRODUCT DETAIL PAGE
-   ===================================================== */
+/* PRODUCT DETAIL */
 
 .product-detail {
-
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 1.15fr)
-    minmax(380px, 0.85fr);
-
+  grid-template-columns: minmax(0, 1.15fr) minmax(380px, 0.85fr);
   min-height: 720px;
-
 }
-
 
 .product-detail-image {
-
   min-height: 720px;
-
   background-position: center;
-
   background-size: cover;
-
 }
-
 
 .product-detail-info {
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   padding: 80px 10%;
-
   background: var(--cream);
-
 }
-
 
 .product-detail-info h1 {
-
   max-width: 650px;
-
   margin-bottom: 15px;
-
   font-size: clamp(58px, 6vw, 88px);
-
   line-height: 0.9;
-
 }
-
 
 .product-detail-price {
-
   margin-bottom: 28px;
-
   font-size: 17px;
-
   font-weight: 500;
-
 }
-
 
 .product-line {
-
   width: 100%;
-
   height: 1px;
-
   margin-bottom: 30px;
-
   background: var(--line);
-
 }
-
 
 .product-detail-description {
-
   max-width: 520px;
-
   margin-bottom: 40px;
-
   color: var(--muted);
-
   font-size: 15px;
-
   line-height: 1.9;
-
 }
-
 
 .product-details-list {
-
   margin-bottom: 40px;
-
   border-top: 1px solid var(--line);
-
 }
-
 
 .product-details-list > div {
-
   display: flex;
-
   justify-content: space-between;
-
   gap: 30px;
-
   padding: 15px 0;
-
   border-bottom: 1px solid var(--line);
-
   font-size: 12px;
-
 }
-
 
 .product-details-list span {
-
   color: var(--muted);
-
 }
-
 
 .product-details-list strong {
-
   font-weight: 500;
-
   text-align: right;
-
 }
-
 
 .product-add {
-
   width: 100%;
-
   margin-bottom: 20px;
-
 }
-
 
 .back-link {
-
   display: inline-block;
-
   color: var(--muted);
-
   font-size: 11px;
-
   letter-spacing: 0.5px;
-
 }
-
 
 .back-link:hover {
-
   color: var(--ink);
-
 }
 
-
-/* =====================================================
-   PRODUCT STORY
-   ===================================================== */
+/* PRODUCT STORY */
 
 .product-story {
-
   padding: 140px 7%;
-
   text-align: center;
-
 }
-
 
 .product-story h2 {
-
   max-width: 800px;
-
   margin: 0 auto 35px;
-
   font-size: clamp(48px, 6vw, 78px);
-
 }
-
 
 .product-story > p:last-child {
-
   max-width: 550px;
-
   margin: auto;
-
   color: var(--muted);
-
 }
 
-
-/* =====================================================
-   FOOTER
-   ===================================================== */
+/* FOOTER */
 
 footer {
-
   display: grid;
-
-  grid-template-columns:
-    1fr 1fr 1fr;
-
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-
   gap: 30px;
-
   padding: 50px 7%;
-
   border-top: 1px solid var(--line);
-
 }
-
 
 .footer-brand {
-
   font-family: "Cormorant Garamond", serif;
-
   font-size: 30px;
-
   font-weight: 600;
-
   letter-spacing: 3px;
-
 }
-
 
 .footer-brand small {
-
   display: block;
-
   margin-top: 5px;
-
   font-family: "Inter", sans-serif;
-
   font-size: 7px;
-
   letter-spacing: 4px;
-
 }
-
 
 .footer-links {
-
   display: flex;
-
   justify-content: center;
-
   gap: 22px;
-
 }
-
 
 .footer-links a {
-
   color: var(--muted);
-
   font-size: 11px;
-
 }
-
 
 footer > p {
-
   color: var(--muted);
-
   font-size: 10px;
-
   text-align: right;
-
 }
 
-
-/* =====================================================
-   MOBILE
-   ===================================================== */
+/* MOBILE */
 
 @media (max-width: 800px) {
 
-
   .site-header {
-
     padding: 17px 5%;
-
   }
-
 
   .brand {
-
     font-size: 27px;
-
   }
-
 
   nav {
-
     display: none;
-
   }
-
 
   .cart-toggle {
-
     font-size: 12px;
-
   }
-
 
   .hero {
-
     min-height: 72vh;
-
     padding: 70px 7%;
-
   }
-
 
   h1 {
-
     font-size: clamp(50px, 15vw, 70px);
-
   }
-
 
   .section {
-
     padding: 80px 6%;
-
   }
-
 
   .categories {
-
     grid-template-columns: 1fr;
-
   }
-
 
   .category-image {
-
     min-height: 430px;
-
   }
-
 
   .features {
-
     grid-template-columns: 1fr 1fr;
-
   }
-
 
   .feature {
-
     padding: 30px 15px;
-
     border-bottom: 1px solid var(--line);
-
   }
-
 
   .feature:nth-child(2) {
-
     border-right: 0;
-
   }
-
 
   .feature:nth-child(3) {
-
     border-right: 1px solid var(--line);
-
   }
-
 
   .products {
-
     grid-template-columns: 1fr;
-
     gap: 55px;
-
   }
-
 
   .product-image {
-
     aspect-ratio: 0.9;
-
   }
-
 
   .story {
-
     grid-template-columns: 1fr;
-
   }
-
 
   .story-image {
-
     min-height: 420px;
-
   }
-
 
   .story-copy {
-
     padding: 70px 8%;
-
   }
-
 
   .newsletter form {
-
     flex-direction: column;
-
     gap: 10px;
-
   }
-
 
   .newsletter input {
-
     min-height: 52px;
-
   }
-
-
-  /* PRODUCT PAGE */
-
 
   .product-detail {
-
     grid-template-columns: 1fr;
-
     min-height: auto;
-
   }
-
 
   .product-detail-image {
-
     min-height: 500px;
-
     order: 1;
-
   }
-
 
   .product-detail-info {
-
     padding: 65px 7% 75px;
-
     order: 2;
-
   }
-
 
   .product-detail-info h1 {
-
     font-size: clamp(52px, 15vw, 72px);
-
   }
-
 
   .product-detail-description {
-
     font-size: 14px;
-
   }
-
 
   .product-details-list > div {
-
     font-size: 11px;
-
   }
-
 
   .product-story {
-
     padding: 90px 7%;
-
   }
-
 
   .product-story h2 {
-
     font-size: clamp(46px, 13vw, 65px);
-
   }
-
 
   footer {
-
     grid-template-columns: 1fr;
-
     text-align: center;
-
   }
-
 
   .footer-links {
-
     flex-wrap: wrap;
-
   }
-
 
   footer > p {
-
     text-align: center;
-
   }
-
 }
-
 
 @media (max-width: 420px) {
 
-
   .hero {
-
     min-height: 76vh;
-
   }
-
 
   .hero h1 {
-
     font-size: 49px;
-
   }
-
 
   .lead {
-
     font-size: 14px;
-
   }
-
 
   .category-image {
-
     min-height: 390px;
-
   }
-
 
   .feature h3 {
-
     font-size: 19px;
-
   }
-
 
   .feature p {
-
     font-size: 10px;
-
   }
-
 
   .product-detail-image {
-
     min-height: 430px;
-
   }
-
 
   .product-detail-info {
-
     padding: 55px 6% 65px;
-
   }
-
 
   .cart {
-
     padding: 40px 24px;
-
   }
-
 }
