@@ -1,1308 +1,692 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
-
-:root {
-  --cream: #f7f3ec;
-  --paper: #ebe4d8;
-  --dark: #25211d;
-  --text: #302b26;
-  --muted: #756e66;
-  --line: rgba(48,43,38,.15);
-  --white: #fff;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--cream);
-  color: var(--text);
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input {
-  font: inherit;
-}
-
-
-/* ==============================
-   HEADER
-   ============================== */
-
-.site-header {
-  height: 82px;
-  padding: 0 5vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  background: rgba(247,243,236,.96);
-  border-bottom: 1px solid var(--line);
-
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.brand {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 31px;
-  font-weight: 500;
-  letter-spacing: .1em;
-  line-height: .8;
-}
-
-.brand small {
-  display: block;
-  text-align: center;
-
-  font-family: "Inter", sans-serif;
-  font-size: 8px;
-  letter-spacing: .48em;
-
-  margin-top: 7px;
-}
-
-.site-header nav {
-  display: flex;
-  gap: 38px;
-}
-
-.site-header nav a {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .16em;
-  color: var(--muted);
-  transition: color .2s ease;
-}
-
-.site-header nav a:hover {
-  color: var(--dark);
-}
-
-.cart-toggle {
-  border: 0;
-  background: transparent;
-  cursor: pointer;
+<!DOCTYPE html>
+<html lang="de">
 
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-}
+<head>
 
-.cart-toggle span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  <meta charset="UTF-8">
 
-  width: 23px;
-  height: 23px;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  margin-left: 7px;
+  <meta name="description"
+        content="MELORA CANDLES – elegante handgefertigte Duftkerzen für besondere Momente.">
 
-  border: 1px solid var(--dark);
-  border-radius: 50%;
+  <title>MELORA CANDLES</title>
 
-  font-size: 10px;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
 
-/* ==============================
-   GENERAL
-   ============================== */
+  <link rel="stylesheet" href="css/style.css">
 
-.eyebrow {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: .28em;
-  color: var(--muted);
-}
+</head>
 
 
-/* ==============================
-   HERO
-   ============================== */
+<body>
 
-.hero {
-  min-height: calc(100vh - 82px);
-  position: relative;
 
-  display: flex;
-  align-items: center;
+<header class="site-header">
 
-  overflow: hidden;
-}
+  <a href="index.html" class="brand">
+    MELORA
+    <small>CANDLES</small>
+  </a>
 
-.hero-image {
-  position: absolute;
-  inset: 0;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(247,243,236,.98) 0%,
-      rgba(247,243,236,.82) 30%,
-      rgba(247,243,236,.25) 65%,
-      rgba(247,243,236,.02) 100%
-    ),
-    url("https://images.unsplash.com/photo-1602523961358-f9f03dd557db?auto=format&fit=crop&w=2200&q=90");
+  <nav>
 
-  background-size: cover;
-  background-position: center;
-}
+    <a href="#collection">
+      Kollektion
+    </a>
 
-.hero-content {
-  position: relative;
-  z-index: 2;
+    <a href="#about">
+      Über uns
+    </a>
 
-  width: 58%;
-  max-width: 780px;
+    <a href="#contact">
+      Kontakt
+    </a>
 
-  padding: 8vw;
-}
+  </nav>
 
-.hero-content h1 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(60px, 7vw, 105px);
+  <button
+    class="cart-toggle"
+    onclick="toggleCart()">
 
-  font-weight: 400;
+    Warenkorb
 
-  line-height: .88;
+    <span id="count">0</span>
 
-  letter-spacing: -.045em;
+  </button>
 
-  margin: 28px 0 32px;
-}
+</header>
 
-.hero-content h1 em {
-  font-style: italic;
-}
 
-.hero-content > p:not(.eyebrow) {
-  max-width: 470px;
 
-  color: var(--muted);
+<main>
 
-  font-size: 15px;
 
-  line-height: 1.9;
+<!-- HERO -->
 
-  margin-bottom: 38px;
-}
+<section class="hero">
 
-.hero-button,
-.dark-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 
-  gap: 25px;
+  <div class="hero-image"></div>
 
-  min-height: 56px;
 
-  padding: 0 29px;
+  <div class="hero-content">
 
-  background: var(--dark);
-  color: white;
 
-  font-size: 9px;
+    <p class="eyebrow">
+      MELORA CANDLES
+    </p>
 
-  letter-spacing: .2em;
 
-  text-transform: uppercase;
+    <h1>
 
-  transition: transform .25s ease;
-}
+      Natürliche Kerzen.
+      <br>
 
-.hero-button:hover,
-.dark-button:hover {
-  transform: translateY(-2px);
-}
+      <em>
+        Für besondere Momente.
+      </em>
 
-.hero-button span,
-.dark-button span {
-  font-size: 17px;
-}
+    </h1>
 
 
-/* ==============================
-   COLLECTION
-   ============================== */
+    <p>
 
-.collection {
-  padding: 140px 6vw 155px;
-}
+      Handgefertigte Duftkerzen,
+      geschaffen für Atmosphäre,
+      Wärme und besondere Augenblicke.
 
-.section-heading {
-  text-align: center;
+    </p>
 
-  max-width: 650px;
 
-  margin: 0 auto 85px;
-}
+    <a
+      href="#collection"
+      class="hero-button">
 
-.section-heading h2 {
-  font-family: "Cormorant Garamond", serif;
+      KOLLEKTION ENTDECKEN
 
-  font-size: clamp(55px, 6vw, 85px);
+      <span>
+        →
+      </span>
 
-  font-weight: 400;
+    </a>
 
-  line-height: .9;
 
-  letter-spacing: -.04em;
+  </div>
 
-  margin: 24px 0 22px;
-}
 
-.section-heading > p:last-child {
-  color: var(--muted);
+</section>
 
-  font-size: 14px;
-}
 
 
-/* ==============================
-   PRODUCTS
-   ============================== */
+<!-- KOLLEKTION -->
 
-.products {
-  max-width: 1400px;
+<section
+  id="collection"
+  class="collection">
 
-  margin: auto;
 
-  display: grid;
+  <div class="section-heading">
 
-  grid-template-columns: repeat(3, 1fr);
 
-  gap: 30px;
-}
+    <p class="eyebrow">
+      UNSERE KOLLEKTION
+    </p>
 
-.product-card {
-  min-width: 0;
-}
 
-.product-image {
-  height: 570px;
+    <h2>
+      Düfte, die bleiben.
+    </h2>
 
-  position: relative;
 
-  display: flex;
+    <p>
+      Entdecke unsere ersten
+      Signature-Kreationen.
+    </p>
 
-  align-items: flex-end;
 
-  justify-content: center;
+  </div>
 
-  overflow: hidden;
 
-  background-size: cover;
-  background-position: center;
 
-  transition: transform .4s ease;
-}
+  <div class="products">
 
-.product-image::after {
-  content: "";
 
-  position: absolute;
-  inset: 0;
 
-  background: rgba(0,0,0,.03);
+    <!-- ROSE -->
 
-  transition: background .35s ease;
-}
+    <article class="product-card">
 
-.product-image:hover::after {
-  background: rgba(0,0,0,.12);
-}
 
+      <a
+        href="product.html?product=rose"
+        class="product-image rose">
 
-/* ROSE */
 
-.product-image.rose {
-  background-image:
-    linear-gradient(
-      rgba(255,255,255,.02),
-      rgba(0,0,0,.08)
-    ),
-    url("https://images.unsplash.com/photo-1602523961358-f9f03dd557db?auto=format&fit=crop&w=1400&q=90");
-}
+        <div class="discover">
+          ENTDECKEN →
+        </div>
 
 
-/* BLOOM */
+      </a>
 
-.product-image.bloom {
-  background-image:
-    linear-gradient(
-      rgba(255,255,255,.02),
-      rgba(0,0,0,.08)
-    ),
-    url("https://images.unsplash.com/photo-1602874801006-e26d3fbead2b?auto=format&fit=crop&w=1400&q=90");
-}
 
 
-/* OCEAN */
+      <div class="product-info">
 
-.product-image.ocean {
-  background-image:
-    linear-gradient(
-      rgba(255,255,255,.02),
-      rgba(0,0,0,.08)
-    ),
-    url("https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1400&q=90");
-}
 
+        <p class="product-number">
+          NO. 01
+        </p>
 
-.discover {
-  position: relative;
 
-  z-index: 2;
+        <h3>
+          ROSE
+        </h3>
 
-  margin-bottom: 28px;
 
-  padding: 14px 22px;
+        <div class="product-line"></div>
 
-  background: rgba(255,255,255,.94);
 
-  font-size: 9px;
+        <p>
 
-  letter-spacing: .18em;
+          Ein eleganter, blumiger Duft,
+          der Ruhe und Geborgenheit schenkt.
 
-  opacity: 0;
+        </p>
 
-  transform: translateY(10px);
 
-  transition:
-    opacity .3s ease,
-    transform .3s ease;
-}
+        <div class="product-bottom">
 
-.product-image:hover .discover {
-  opacity: 1;
-  transform: translateY(0);
-}
 
+          <strong>
+            29,90 €
+          </strong>
 
-.product-info {
-  padding: 27px 3px 0;
-}
 
-.product-number {
-  font-size: 9px;
+          <button
+            onclick="add('ROSE No. 01', 29.90)">
 
-  color: var(--muted);
+            IN DEN WARENKORB
 
-  letter-spacing: .2em;
+          </button>
 
-  margin-bottom: 5px;
-}
 
-.product-info h3 {
-  font-family: "Cormorant Garamond", serif;
+        </div>
 
-  font-size: 42px;
 
-  font-weight: 500;
+      </div>
 
-  line-height: 1;
 
-  margin-bottom: 13px;
-}
+    </article>
 
-.product-line {
-  width: 100%;
 
-  height: 1px;
 
-  background: var(--line);
+    <!-- BLOOM -->
 
-  margin-bottom: 18px;
-}
+    <article class="product-card">
 
-.product-info > p:not(.product-number) {
-  color: var(--muted);
 
-  font-size: 13px;
+      <a
+        href="product.html?product=bloom"
+        class="product-image bloom">
 
-  line-height: 1.75;
 
-  max-width: 370px;
-}
+        <div class="discover">
+          ENTDECKEN →
+        </div>
 
-.product-bottom {
-  margin-top: 25px;
 
-  padding-top: 18px;
+      </a>
 
-  border-top: 1px solid var(--line);
 
-  display: flex;
 
-  align-items: center;
+      <div class="product-info">
 
-  justify-content: space-between;
 
-  gap: 15px;
-}
+        <p class="product-number">
+          NO. 02
+        </p>
 
-.product-bottom strong {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: 25px;
+        <h3>
+          BLOOM
+        </h3>
 
-  font-weight: 500;
-}
 
-.product-bottom button {
-  border: 0;
+        <div class="product-line"></div>
 
-  background: transparent;
 
-  cursor: pointer;
+        <p>
 
-  font-size: 9px;
+          Frisch, blumig und natürlich.
+          Ein Duft wie ein Spaziergang
+          im Frühling.
 
-  letter-spacing: .13em;
+        </p>
 
-  text-transform: uppercase;
 
-  border-bottom: 1px solid var(--dark);
+        <div class="product-bottom">
 
-  padding-bottom: 5px;
-}
 
+          <strong>
+            34,90 €
+          </strong>
 
-/* ==============================
-   STATEMENT
-   ============================== */
 
-.statement {
-  background: var(--dark);
+          <button
+            onclick="add('BLOOM', 34.90)">
 
-  color: var(--cream);
+            IN DEN WARENKORB
 
-  padding: 165px 10vw;
+          </button>
 
-  text-align: left;
-}
 
-.statement .eyebrow {
-  color: #aaa198;
-}
+        </div>
 
-.statement h2 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(60px, 7vw, 108px);
+      </div>
 
-  font-weight: 400;
 
-  line-height: .87;
+    </article>
 
-  letter-spacing: -.045em;
 
-  margin: 30px 0 42px;
-}
 
-.statement > p:last-child {
-  max-width: 520px;
+    <!-- OCEAN -->
 
-  color: #c4bdb3;
+    <article class="product-card">
 
-  font-size: 15px;
 
-  line-height: 1.9;
-}
+      <a
+        href="product.html?product=ocean"
+        class="product-image ocean">
 
 
-/* ==============================
-   ABOUT
-   ============================== */
+        <div class="discover">
+          ENTDECKEN →
+        </div>
 
-.about {
-  display: grid;
 
-  grid-template-columns: 1fr 1fr;
+      </a>
 
-  min-height: 750px;
-}
 
-.about-image {
-  background:
-    linear-gradient(
-      rgba(255,255,255,.02),
-      rgba(0,0,0,.08)
-    ),
-    url("https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1800&q=90");
 
-  background-size: cover;
-  background-position: center;
-}
+      <div class="product-info">
 
-.about-content {
-  padding: 10vw;
 
-  display: flex;
+        <p class="product-number">
+          NO. 03
+        </p>
 
-  flex-direction: column;
 
-  justify-content: center;
-}
+        <h3>
+          OCEAN
+        </h3>
 
-.about-content h2 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(60px, 6vw, 92px);
+        <div class="product-line"></div>
 
-  font-weight: 400;
 
-  line-height: .88;
+        <p>
 
-  letter-spacing: -.04em;
+          Frische Meeresbrise trifft
+          auf warme, beruhigende Noten.
 
-  margin: 25px 0 42px;
-}
+        </p>
 
-.about-content h2 em {
-  font-style: italic;
-}
 
-.about-content p:not(.eyebrow) {
-  max-width: 480px;
+        <div class="product-bottom">
 
-  color: var(--muted);
 
-  font-size: 15px;
+          <strong>
+            39,90 €
+          </strong>
 
-  line-height: 1.9;
 
-  margin-bottom: 18px;
-}
+          <button
+            onclick="add('OCEAN No. 03', 39.90)">
 
+            IN DEN WARENKORB
 
-/* ==============================
-   INSTAGRAM
-   ============================== */
+          </button>
 
-.instagram {
-  padding: 105px 8vw;
 
-  background: var(--paper);
+        </div>
 
-  display: flex;
 
-  align-items: center;
+      </div>
 
-  justify-content: space-between;
 
-  gap: 40px;
-}
+    </article>
 
-.instagram h2 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: 68px;
 
-  font-weight: 400;
+  </div>
 
-  line-height: 1;
 
-  margin: 18px 0;
-}
+</section>
 
-.instagram p:not(.eyebrow) {
-  color: var(--muted);
 
-  font-size: 14px;
-}
 
+<!-- STATEMENT -->
 
-/* ==============================
-   CONTACT
-   ============================== */
+<section class="statement">
 
-.contact {
-  padding: 150px 20px;
 
-  text-align: center;
-}
+  <p class="eyebrow">
+    THE MELORA IDEA
+  </p>
 
-.contact h2 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(55px, 7vw, 92px);
+  <h2>
 
-  font-weight: 400;
+    Ein Duft kann
+    <br>
+    einen Raum verändern.
 
-  line-height: .88;
+  </h2>
 
-  letter-spacing: -.04em;
 
-  margin: 25px 0;
-}
+  <p>
 
-.contact > p:not(.eyebrow) {
-  color: var(--muted);
+    Eine Kerze ist mehr als nur Licht.
+    Sie schafft Atmosphäre, Erinnerungen
+    und kleine Momente, die bleiben.
 
-  font-size: 14px;
+  </p>
 
-  margin-bottom: 40px;
-}
 
-.contact form {
-  max-width: 550px;
+</section>
 
-  margin: auto;
 
-  display: flex;
 
-  border-bottom: 1px solid var(--dark);
-}
+<!-- ÜBER UNS -->
 
-.contact input {
-  flex: 1;
+<section
+  id="about"
+  class="about">
 
-  min-width: 0;
 
-  border: 0;
+  <div class="about-image"></div>
 
-  outline: 0;
 
-  background: transparent;
+  <div class="about-content">
 
-  padding: 17px 0;
 
-  font-size: 13px;
-}
+    <p class="eyebrow">
+      MADE WITH LOVE
+    </p>
 
-.contact button {
-  border: 0;
 
-  background: transparent;
+    <h2>
 
-  cursor: pointer;
+      Designed to be
+      <br>
 
-  font-size: 9px;
+      <em>
+        remembered.
+      </em>
 
-  letter-spacing: .17em;
+    </h2>
 
-  text-transform: uppercase;
-}
 
+    <p>
 
-/* ==============================
-   CART
-   ============================== */
+      MELORA CANDLES verbindet
+      ausgewählte Duftwelten mit
+      zeitlosem Design.
 
-.cart {
-  position: fixed;
+    </p>
 
-  z-index: 500;
 
-  top: 0;
-  right: 0;
+    <p>
 
-  width: min(440px, 100%);
+      Jede Kerze soll sich nicht nur
+      gut anfühlen und gut riechen –
+      sondern ein Teil deines Zuhauses
+      werden.
 
-  height: 100vh;
+    </p>
 
-  padding: 45px 35px;
 
-  background: var(--cream);
+  </div>
 
-  box-shadow: -20px 0 60px rgba(0,0,0,.12);
 
-  transform: translateX(110%);
+</section>
 
-  transition: transform .35s ease;
 
-  overflow-y: auto;
-}
 
-.cart.open {
-  transform: translateX(0);
-}
+<!-- INSTAGRAM -->
 
-.cart .close {
-  position: absolute;
+<section class="instagram">
 
-  top: 25px;
-  right: 25px;
 
-  border: 0;
+  <div>
 
-  background: transparent;
 
-  cursor: pointer;
+    <p class="eyebrow">
+      FOLLOW MELORA
+    </p>
 
-  font-size: 30px;
 
-  font-weight: 200;
-}
+    <h2>
+      @melora.candles
+    </h2>
 
-.cart h2 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: 48px;
+    <p>
 
-  font-weight: 400;
+      Neue Düfte · Inspiration ·
+      Behind the Scenes
 
-  margin: 15px 0 40px;
-}
+    </p>
 
-.cart-item {
-  display: flex;
 
-  justify-content: space-between;
+  </div>
 
-  gap: 20px;
 
-  padding: 22px 0;
+  <a
+    href="https://www.instagram.com/melora.candles/"
+    target="_blank"
+    class="dark-button">
 
-  border-bottom: 1px solid var(--line);
-}
+    INSTAGRAM ÖFFNEN
 
-.cart-item h4 {
-  font-family: "Cormorant Garamond", serif;
+    <span>
+      →
+    </span>
 
-  font-size: 24px;
+  </a>
 
-  font-weight: 500;
-}
 
-.cart-item p {
-  color: var(--muted);
+</section>
 
-  font-size: 12px;
-}
 
-.cart-item button {
-  margin-top: 12px;
 
-  margin-right: 12px;
+<!-- KONTAKT -->
 
-  border: 0;
+<section
+  id="contact"
+  class="contact">
 
-  background: transparent;
 
-  cursor: pointer;
+  <p class="eyebrow">
+    STAY IN THE LIGHT
+  </p>
 
-  color: var(--muted);
 
-  font-size: 9px;
+  <h2>
 
-  text-transform: uppercase;
+    Something beautiful
+    <br>
+    is coming.
 
-  letter-spacing: .08em;
-}
+  </h2>
 
-.cart-item > strong {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: 22px;
+  <p>
 
-  white-space: nowrap;
-}
+    Melde dich für Neuigkeiten
+    und neue Kollektionen an.
 
-.total {
-  display: flex;
+  </p>
 
-  justify-content: space-between;
 
-  padding: 30px 0;
 
-  margin-top: 20px;
+  <form
+    onsubmit="event.preventDefault(); alert('Demo: Newsletter-Anmeldung');">
 
-  border-top: 1px solid var(--dark);
-}
 
-.total strong {
-  font-family: "Cormorant Garamond", serif;
+    <input
+      type="email"
+      placeholder="E-Mail-Adresse"
+      required>
 
-  font-size: 27px;
-}
 
-.checkout {
-  width: 100%;
+    <button type="submit">
+      ANMELDEN
+    </button>
 
-  min-height: 58px;
 
-  border: 0;
+  </form>
 
-  background: var(--dark);
 
-  color: white;
+</section>
 
-  cursor: pointer;
 
-  font-size: 10px;
+</main>
 
-  letter-spacing: .15em;
 
-  text-transform: uppercase;
-}
 
-.demo-note {
-  text-align: center;
+<!-- WARENKORB -->
 
-  color: var(--muted);
+<aside
+  id="cart"
+  class="cart">
 
-  font-size: 11px;
 
-  margin-top: 20px;
-}
+  <button
+    class="close"
+    onclick="toggleCart()">
 
+    ×
 
-/* ==============================
-   FOOTER
-   ============================== */
+  </button>
 
-footer {
-  padding: 75px 6vw 35px;
 
-  background: #211e1a;
+  <p class="eyebrow">
+    MELORA CANDLES
+  </p>
 
-  color: #e8e1d7;
-}
 
-.footer-brand {
-  font-family: "Cormorant Garamond", serif;
+  <h2>
+    Dein Warenkorb
+  </h2>
 
-  font-size: 35px;
 
-  letter-spacing: .08em;
+  <div id="items">
 
-  line-height: .8;
-}
+    <p>
+      Dein Warenkorb ist leer.
+    </p>
 
-.footer-brand small {
-  display: block;
+  </div>
 
-  font-family: "Inter", sans-serif;
 
-  font-size: 8px;
+  <div class="total">
 
-  letter-spacing: .45em;
 
-  margin-top: 8px;
-}
+    <span>
+      Gesamt
+    </span>
 
-.footer-links {
-  display: flex;
 
-  gap: 30px;
+    <strong id="total">
+      0,00 €
+    </strong>
 
-  margin: 50px 0;
-}
 
-.footer-links a {
-  color: #aaa198;
+  </div>
 
-  font-size: 10px;
 
-  text-transform: uppercase;
+  <button
+    class="checkout"
+    onclick="alert('Demo: Checkout – Zahlung und Bestellung sind noch nicht aktiviert.')">
 
-  letter-spacing: .14em;
-}
+    ZUR KASSE
 
-footer > p {
-  padding-top: 25px;
+  </button>
 
-  border-top: 1px solid rgba(255,255,255,.12);
 
-  color: #807970;
+  <p class="demo-note">
 
-  font-size: 10px;
-}
+    Demo-Shop – aktuell sind keine
+    echten Bestellungen möglich.
 
+  </p>
 
-/* ==============================
-   PRODUCT PAGE
-   ============================== */
 
-.product-page {
-  background: var(--cream);
-}
+</aside>
 
-.product-detail {
-  max-width: 1380px;
 
-  margin: auto;
 
-  padding: 80px 6vw 110px;
+<!-- FOOTER -->
 
-  display: grid;
+<footer>
 
-  grid-template-columns:
-    minmax(0,1.15fr)
-    minmax(380px,.85fr);
 
-  gap: 90px;
+  <div class="footer-brand">
 
-  align-items: center;
-}
+    MELORA
 
-.product-detail-image {
-  min-height: 680px;
+    <small>
+      CANDLES
+    </small>
 
-  background-size: cover;
+  </div>
 
-  background-position: center;
-}
 
-.product-detail-info {
-  max-width: 520px;
-}
+  <div class="footer-links">
 
-.product-detail-info h1 {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: clamp(55px,6vw,85px);
+    <a href="#collection">
+      Kollektion
+    </a>
 
-  font-weight: 400;
 
-  line-height: .9;
+    <a href="#about">
+      Über uns
+    </a>
 
-  letter-spacing: -.04em;
 
-  margin: 20px 0;
-}
+    <a href="#contact">
+      Kontakt
+    </a>
 
-.product-detail-price {
-  font-family: "Cormorant Garamond", serif;
 
-  font-size: 30px;
-}
+  </div>
 
-.product-line {
-  height: 1px;
 
-  background: var(--line);
+  <p>
 
-  margin: 35px 0;
-}
+    © 2026 MELORA CANDLES · Demo Concept
 
-.product-detail-description {
-  color: var(--muted);
+  </p>
 
-  line-height: 1.9;
 
-  margin-bottom: 40px;
-}
+</footer>
 
-.product-details-list {
-  border-top: 1px solid var(--line);
 
-  margin-bottom: 40px;
-}
 
-.product-details-list > div {
-  display: flex;
+<script src="js/app.js"></script>
 
-  justify-content: space-between;
 
-  gap: 20px;
+</body>
 
-  padding: 17px 0;
-
-  border-bottom: 1px solid var(--line);
-}
-
-.product-details-list span {
-  color: var(--muted);
-
-  font-size: 10px;
-
-  text-transform: uppercase;
-
-  letter-spacing: .14em;
-}
-
-.product-details-list strong {
-  font-size: 13px;
-
-  font-weight: 400;
-
-  text-align: right;
-}
-
-.product-add {
-  width: 100%;
-
-  min-height: 60px;
-
-  border: 0;
-
-  background: var(--dark);
-
-  color: white;
-
-  cursor: pointer;
-
-  text-transform: uppercase;
-
-  letter-spacing: .14em;
-
-  font-size: 10px;
-}
-
-.back-link {
-  display: inline-block;
-
-  margin-top: 25px;
-
-  color: var(--muted);
-
-  font-size: 10px;
-
-  text-transform: uppercase;
-
-  letter-spacing: .14em;
-}
-
-.product-story {
-  padding: 140px 20px;
-
-  background: var(--paper);
-
-  text-align: center;
-}
-
-.product-story h2 {
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: clamp(55px,7vw,90px);
-
-  font-weight: 400;
-
-  line-height: .9;
-
-  margin: 25px auto 40px;
-}
-
-.product-story p:last-child {
-  max-width: 580px;
-
-  margin: auto;
-
-  color: var(--muted);
-
-  line-height: 1.9;
-}
-
-
-/* ==============================
-   TABLET
-   ============================== */
-
-@media (max-width: 900px) {
-
-  .site-header {
-    height: 72px;
-    padding: 0 20px;
-  }
-
-  .site-header nav {
-    display: none;
-  }
-
-  .brand {
-    font-size: 27px;
-  }
-
-  .hero {
-    min-height: 720px;
-  }
-
-  .hero-image {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(247,243,236,.05),
-        rgba(247,243,236,.72) 68%,
-        rgba(247,243,236,.98) 100%
-      ),
-      url("https://images.unsplash.com/photo-1602523961358-f9f03dd557db?auto=format&fit=crop&w=1300&q=90");
-
-    background-position: center;
-  }
-
-  .hero-content {
-    width: 100%;
-
-    padding: 40px 25px;
-
-    align-self: flex-end;
-  }
-
-  .hero-content h1 {
-    font-size: 62px;
-  }
-
-  .collection {
-    padding: 90px 20px 100px;
-  }
-
-  .section-heading {
-    margin-bottom: 55px;
-  }
-
-  .products {
-    grid-template-columns: 1fr;
-
-    gap: 70px;
-  }
-
-  .product-image {
-    height: 520px;
-  }
-
-  .discover {
-    opacity: 1;
-
-    transform: none;
-  }
-
-  .statement {
-    padding: 105px 25px;
-  }
-
-  .about {
-    grid-template-columns: 1fr;
-  }
-
-  .about-image {
-    min-height: 500px;
-  }
-
-  .about-content {
-    padding: 90px 25px;
-  }
-
-  .instagram {
-    padding: 80px 25px;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-  }
-
-  .instagram h2 {
-    font-size: 55px;
-  }
-
-  .contact {
-    padding: 100px 25px;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .product-detail {
-    display: block;
-
-    padding: 30px 20px 80px;
-  }
-
-  .product-detail-image {
-    min-height: 480px;
-
-    margin-bottom: 45px;
-  }
-
-  .product-detail-info {
-    max-width: none;
-  }
-
-  .product-detail-info h1 {
-    font-size: 58px;
-  }
-
-  .product-story {
-    padding: 90px 25px;
-  }
-
-}
-
-
-/* ==============================
-   PHONE
-   ============================== */
-
-@media (max-width: 480px) {
-
-  .hero {
-    min-height: 680px;
-  }
-
-  .hero-content {
-    padding: 35px 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 54px;
-  }
-
-  .hero-content > p:not(.eyebrow) {
-    font-size: 14px;
-  }
-
-  .product-image {
-    height: 450px;
-  }
-
-  .product-info h3 {
-    font-size: 36px;
-  }
-
-  .statement h2 {
-    font-size: 58px;
-  }
-
-  .about-image {
-    min-height: 420px;
-  }
-
-  .about-content h2 {
-    font-size: 58px;
-  }
-
-  .instagram h2 {
-    font-size: 48px;
-  }
-
-  .cart {
-    padding: 40px 22px;
-  }
-
-  .product-detail {
-    padding: 20px 18px 60px;
-  }
-
-  .product-detail-image {
-    min-height: 420px;
-  }
-
-  .product-detail-info h1 {
-    font-size: 50px;
-  }
-
-}
+</html>
