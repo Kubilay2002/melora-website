@@ -4,7 +4,7 @@ function add(name, price) {
   const existing = cart.find(item => item.name === name);
 
   if (existing) {
-    existing.quantity += 1;
+    existing.quantity++;
   } else {
     cart.push({
       name: name,
@@ -22,7 +22,7 @@ function decrease(name) {
 
   if (!product) return;
 
-  product.quantity -= 1;
+  product.quantity--;
 
   if (product.quantity <= 0) {
     cart = cart.filter(item => item.name !== name);
@@ -44,10 +44,7 @@ function updateCart() {
   if (!items || !count || !totalElement) return;
 
   if (cart.length === 0) {
-    items.innerHTML = `
-      <p>Dein Warenkorb ist leer.</p>
-    `;
-
+    items.innerHTML = "<p>Dein Warenkorb ist leer.</p>";
     count.textContent = "0";
     totalElement.textContent = "0,00 €";
     return;
@@ -60,25 +57,18 @@ function updateCart() {
 
   cart.forEach(product => {
     const productTotal =
-      Number(product.price) * Number(product.quantity);
+      product.price * product.quantity;
 
     total += productTotal;
-    quantity += Number(product.quantity);
+    quantity += product.quantity;
 
     const item = document.createElement("div");
-
     item.className = "cart-item";
 
     item.innerHTML = `
       <div>
         <h4>${product.name}</h4>
-
-        <p>
-          ${Number(product.price)
-            .toFixed(2)
-            .replace(".", ",")} €
-          × ${product.quantity}
-        </p>
+        <p>${product.price.toFixed(2).replace(".", ",")} € × ${product.quantity}</p>
 
         <button onclick="decrease('${product.name}')">
           − weniger
@@ -90,9 +80,7 @@ function updateCart() {
       </div>
 
       <strong>
-        ${productTotal
-          .toFixed(2)
-          .replace(".", ",")} €
+        ${productTotal.toFixed(2).replace(".", ",")} €
       </strong>
     `;
 
@@ -100,7 +88,6 @@ function updateCart() {
   });
 
   count.textContent = quantity;
-
   totalElement.textContent =
     total.toFixed(2).replace(".", ",") + " €";
 }
