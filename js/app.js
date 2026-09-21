@@ -3,120 +3,41 @@
    SHOPPING CART
    ===================================================== */
 
+const CART_KEY = "MELORA_CANDLES_CART";
+
 
 /* =====================================================
-   STORAGE
+   LOAD CART
    ===================================================== */
 
-const CART_KEY = "meloraCart";
-
-
 function loadCart() {
-
-  /* ---------- localStorage ---------- */
 
   try {
 
     const saved =
-      localStorage.getItem(CART_KEY);
+      window.localStorage.getItem(CART_KEY);
 
-    if (saved) {
-
-      return JSON.parse(saved);
-
+    if (!saved) {
+      return [];
     }
 
-  } catch (error) {
+    const parsed =
+      JSON.parse(saved);
 
-    console.log(
-      "localStorage nicht verfügbar"
-    );
-
-  }
-
-
-  /* ---------- Cookie fallback ---------- */
-
-  try {
-
-    const cookies =
-      document.cookie.split(";");
-
-    const cookie =
-      cookies.find(
-        item =>
-          item.trim()
-            .startsWith(CART_KEY + "=")
-      );
-
-    if (cookie) {
-
-      const value =
-        cookie
-          .split("=")
-          .slice(1)
-          .join("=");
-
-      return JSON.parse(
-        decodeURIComponent(value)
-      );
-
+    if (!Array.isArray(parsed)) {
+      return [];
     }
 
-  } catch (error) {
-
-    console.log(
-      "Cookie-Speicher nicht verfügbar"
-    );
-
-  }
-
-
-  return [];
-
-}
-
-
-
-function saveCart() {
-
-  const data =
-    JSON.stringify(cart);
-
-
-  /* ---------- localStorage ---------- */
-
-  try {
-
-    localStorage.setItem(
-      CART_KEY,
-      data
-    );
+    return parsed;
 
   } catch (error) {
 
     console.log(
-      "localStorage konnte nicht gespeichert werden"
+      "MELORA: Warenkorb konnte nicht geladen werden.",
+      error
     );
 
-  }
-
-
-  /* ---------- Cookie ---------- */
-
-  try {
-
-    document.cookie =
-      CART_KEY +
-      "=" +
-      encodeURIComponent(data) +
-      "; path=/; max-age=2592000; SameSite=Lax";
-
-  } catch (error) {
-
-    console.log(
-      "Cookie konnte nicht gespeichert werden"
-    );
+    return [];
 
   }
 
@@ -131,27 +52,54 @@ let cart = loadCart();
 
 
 /* =====================================================
-   ADD
+   SAVE CART
+   ===================================================== */
+
+function saveCart() {
+
+  try {
+
+    window.localStorage.setItem(
+      CART_KEY,
+      JSON.stringify(cart)
+    );
+
+  } catch (error) {
+
+    console.log(
+      "MELORA: Warenkorb konnte nicht gespeichert werden.",
+      error
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ADD PRODUCT
    ===================================================== */
 
 function add(name, price) {
 
-  const existingProduct =
+  const existing =
     cart.find(
       item => item.name === name
     );
 
 
-  if (existingProduct) {
+  if (existing) {
 
-    existingProduct.quantity += 1;
+    existing.quantity += 1;
 
   } else {
 
     cart.push({
 
       name: name,
-      price: price,
+
+      price: Number(price),
+
       quantity: 1
 
     });
@@ -180,7 +128,9 @@ function decrease(name) {
     );
 
 
-  if (!product) return;
+  if (!product) {
+    return;
+  }
 
 
   product.quantity -= 1;
@@ -228,71 +178,65 @@ function removeItem(name) {
 
 function updateCart() {
 
-  const itemsContainer =
+  const items =
     document.getElementById("items");
 
-  const countElement =
+  const count =
     document.getElementById("count");
 
   const totalElement =
     document.getElementById("total");
 
 
-  if (
-    !itemsContainer ||
-    !countElement ||
-    !totalElement
-  ) {
-
+  if (!items || !count || !totalElement) {
     return;
-
   }
 
 
-  /* ---------- EMPTY ---------- */
+  /* -----------------------------------------------------
+     EMPTY
+     ----------------------------------------------------- */
 
   if (cart.length === 0) {
 
-    itemsContainer.innerHTML = `
+    items.innerHTML = `
       <p>
         Dein Warenkorb ist leer.
       </p>
     `;
 
-
-    countElement.textContent = "0";
-
+    count.textContent = "0";
 
     totalElement.textContent =
       "0,00 €";
-
 
     return;
 
   }
 
 
-  /* ---------- PRODUCTS ---------- */
+  /* -----------------------------------------------------
+     BUILD CART
+     ----------------------------------------------------- */
+
+  items.innerHTML = "";
 
   let total = 0;
 
-  let itemCount = 0;
-
-
-  itemsContainer.innerHTML = "";
+  let quantity = 0;
 
 
   cart.forEach(product => {
 
     const productTotal =
-      product.price *
-      product.quantity;
+      Number(product.price) *
+      Number(product.quantity);
 
 
     total += productTotal;
 
-    itemCount +=
-      product.quantity;
+    quantity +=
+      Number(product.quantity);
 
 
     const item =
@@ -312,10 +256,12 @@ function updateCart() {
         </h4>
 
         <p>
-          ${product.price
+          ${Number(product.price)
             .toFixed(2)
             .replace(".", ",")} €
+
           ×
+
           ${product.quantity}
         </p>
 
@@ -346,18 +292,14 @@ function updateCart() {
     `;
 
 
-    itemsContainer.appendChild(item);
+    items.appendChild(item);
 
   });
 
 
-  /* ---------- COUNT ---------- */
+  count.textContent =
+    quantity;
 
-  countElement.textContent =
-    itemCount;
-
-
-  /* ---------- TOTAL ---------- */
 
   totalElement.textContent =
     total
@@ -369,7 +311,7 @@ function updateCart() {
 
 
 /* =====================================================
-   OPEN / CLOSE
+   OPEN / CLOSE CART
    ===================================================== */
 
 function toggleCart() {
@@ -378,12 +320,12 @@ function toggleCart() {
     document.getElementById("cart");
 
 
-  if (!cartElement) return;
+  if (!cartElement) {
+    return;
+  }
 
 
-  cartElement.classList.toggle(
-    "open"
-  );
+  cartElement.classList.toggle("open");
 
 }
 
@@ -394,32 +336,23 @@ function openCart() {
     document.getElementById("cart");
 
 
-  if (!cartElement) return;
+  if (!cartElement) {
+    return;
+  }
 
 
-  cartElement.classList.add(
-    "open"
-  );
+  cartElement.classList.add("open");
 
 }
 
 
 /* =====================================================
-   RELOAD CART
+   RESTORE CART
    ===================================================== */
 
-function reloadCart() {
+function restoreCart() {
 
-  const savedCart =
-    loadCart();
-
-
-  if (Array.isArray(savedCart)) {
-
-    cart = savedCart;
-
-  }
-
+  cart = loadCart();
 
   updateCart();
 
@@ -427,28 +360,28 @@ function reloadCart() {
 
 
 /* =====================================================
-   INITIALIZE
+   PAGE LOAD
    ===================================================== */
 
 document.addEventListener(
   "DOMContentLoaded",
   function () {
 
-    reloadCart();
+    restoreCart();
 
   }
 );
 
 
 /* =====================================================
-   SAFARI / PAGE CACHE
+   SAFARI / BROWSER CACHE
    ===================================================== */
 
 window.addEventListener(
   "pageshow",
   function () {
 
-    reloadCart();
+    restoreCart();
 
   }
 );
