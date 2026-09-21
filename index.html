@@ -1,222 +1,427 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MELORA – handgefertigte Kerzen für besondere Räume und Momente.">
-  <title>MELORA — Handcrafted Candles</title>
+
+  <meta name="description"
+    content="MELORA CANDLES – handgefertigte Kerzen, besondere Düfte und elegante Kerzen für dein Zuhause.">
+
+  <meta name="keywords"
+    content="MELORA, MELORA CANDLES, Kerzen, Duftkerzen, handgemachte Kerzen">
+
+  <meta name="author" content="MELORA CANDLES">
+
+  <title>MELORA CANDLES – Handcrafted Candles</title>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
+
+
 <body>
 
 <header class="site-header">
-  <a class="brand" href="#">MELORA</a>
+
+  <a class="brand" href="index.html">
+    MELORA
+    <small>CANDLES</small>
+  </a>
 
   <nav>
-    <a href="#collection">Collection</a>
-    <a href="#story">Our Story</a>
-    <a href="#contact">Contact</a>
+    <a href="#collection">Kollektion</a>
+    <a href="#story">Über uns</a>
+    <a href="#contact">Kontakt</a>
   </nav>
 
   <button class="cart-toggle" onclick="toggleCart()">
-    Bag <span id="count">0</span>
+    Warenkorb
+    <span id="count">0</span>
   </button>
+
 </header>
+
 
 <main>
 
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">HANDCRAFTED CANDLES</p>
+<section class="hero">
 
-      <h1>Light,<br><em>made beautiful.</em></h1>
+  <div class="hero-copy">
 
-      <p class="lead">
-        Sculptural candles, refined fragrances and quiet moments —
-        created by hand.
-      </p>
-
-      <a class="button" href="#collection">
-        Discover the collection
-      </a>
-    </div>
-  </section>
-
-
-  <section id="collection" class="section">
-
-    <div class="section-intro">
-      <p class="eyebrow">THE COLLECTION</p>
-      <h2>Objects of light.</h2>
-
-      <p>
-        Eine Demo-Kollektion für den späteren echten MELORA-Shop.
-      </p>
-    </div>
-
-
-    <div class="products">
-
-      <article class="product">
-
-        <img
-          src="https://images.unsplash.com/photo-1602523961358-f9f03dd557db?auto=format&fit=crop&w=1000&q=85"
-          alt="Beispiel einer eleganten Kerze"
-        >
-
-        <div class="product-info">
-          <div>
-            <h3>ROSE No. 01</h3>
-            <p>Sculptural floral candle</p>
-          </div>
-
-          <strong>29,90 €</strong>
-        </div>
-
-        <button onclick="add('ROSE No. 01', 29.90)">
-          Add to bag
-        </button>
-
-      </article>
-
-
-      <article class="product">
-
-        <img
-          src="https://images.unsplash.com/photo-1602874801006-e26d3fbead2b?auto=format&fit=crop&w=1000&q=85"
-          alt="Beispiel einer Premium-Kerze"
-        >
-
-        <div class="product-info">
-          <div>
-            <h3>BLOOM</h3>
-            <p>Soft floral fragrance</p>
-          </div>
-
-          <strong>34,90 €</strong>
-        </div>
-
-        <button onclick="add('BLOOM', 34.90)">
-          Add to bag
-        </button>
-
-      </article>
-
-
-      <article class="product">
-
-        <img
-          src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1000&q=85"
-          alt="Beispiel einer Kerze im Gefäß"
-        >
-
-        <div class="product-info">
-          <div>
-            <h3>SIGNATURE</h3>
-            <p>Amber · vanilla · musk</p>
-          </div>
-
-          <strong>39,90 €</strong>
-        </div>
-
-        <button onclick="add('SIGNATURE', 39.90)">
-          Add to bag
-        </button>
-
-      </article>
-
-    </div>
-
-  </section>
-
-
-  <section id="story" class="story">
-
-    <div class="story-image"></div>
-
-    <div class="story-copy">
-
-      <p class="eyebrow">THE MELORA IDEA</p>
-
-      <h2>
-        Made by hand.<br>
-        Made to be seen.
-      </h2>
-
-      <p>
-        Melora verbindet Form, Duft und Atmosphäre.
-        Diese Demo zeigt die visuelle Richtung; später ersetzen wir
-        Texte, Bilder und Produkte durch eure eigenen Inhalte.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <section id="contact" class="newsletter">
-
-    <p class="eyebrow">STAY IN THE LIGHT</p>
-
-    <h2>Something beautiful is coming.</h2>
-
-    <p>
-      Eine Demo-Seite – später können wir hier euren echten
-      Newsletter integrieren.
+    <p class="eyebrow">
+      MELORA CANDLES
     </p>
 
-    <form onsubmit="event.preventDefault(); alert('Demo: Newsletter-Anmeldung');">
+    <h1>
+      Mehr als nur ein Licht.
+      <br>
+      <em>Ein Gefühl.</em>
+    </h1>
 
-      <input
-        type="email"
-        placeholder="E-Mail-Adresse"
-        required
-      >
+    <p class="lead">
+      Handgefertigte Kerzen, besondere Düfte
+      und zeitlose Formen für besondere Momente.
+    </p>
 
-      <button class="button" type="submit">
-        Join
+    <a class="button" href="#collection">
+      Kollektion entdecken →
+    </a>
+
+  </div>
+
+</section>
+
+
+<section id="collection" class="section">
+
+  <div class="section-intro">
+
+    <p class="eyebrow">
+      THE MELORA COLLECTION
+    </p>
+
+    <h2>
+      Für jede Stimmung
+      <br>
+      die passende Kerze.
+    </h2>
+
+    <p>
+      Entdecke unsere drei Duftwelten.
+    </p>
+
+  </div>
+
+
+  <div class="categories">
+
+    <a class="category-card" href="#floral">
+
+      <div class="category-image floral-image">
+
+        <div class="category-overlay">
+
+          <p>COLLECTION 01</p>
+
+          <h3>Blumig</h3>
+
+          <span>Frisch & elegant</span>
+
+        </div>
+
+      </div>
+
+    </a>
+
+
+    <a class="category-card" href="#woody">
+
+      <div class="category-image woody-image">
+
+        <div class="category-overlay">
+
+          <p>COLLECTION 02</p>
+
+          <h3>Holzig</h3>
+
+          <span>Warm & natürlich</span>
+
+        </div>
+
+      </div>
+
+    </a>
+
+
+    <a class="category-card" href="#fruity">
+
+      <div class="category-image fruity-image">
+
+        <div class="category-overlay">
+
+          <p>COLLECTION 03</p>
+
+          <h3>Fruchtig</h3>
+
+          <span>Leicht & belebend</span>
+
+        </div>
+
+      </div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<section class="features">
+
+  <div class="feature">
+    <span>♢</span>
+    <h3>Natürliche Inhaltsstoffe</h3>
+    <p>Bewusst ausgewählte Materialien</p>
+  </div>
+
+  <div class="feature">
+    <span>♡</span>
+    <h3>Handgefertigt</h3>
+    <p>Mit Liebe zum Detail</p>
+  </div>
+
+  <div class="feature">
+    <span>♧</span>
+    <h3>Schneller Versand</h3>
+    <p>1–3 Werktage</p>
+  </div>
+
+  <div class="feature">
+    <span>◇</span>
+    <h3>Sichere Zahlung</h3>
+    <p>SSL-verschlüsselt</p>
+  </div>
+
+</section>
+
+
+<section class="section featured">
+
+  <div class="section-intro">
+
+    <p class="eyebrow">
+      MELORA SIGNATURE
+    </p>
+
+    <h2>
+      Unsere Bestseller.
+    </h2>
+
+  </div>
+
+
+  <div class="products">
+
+
+    <article class="product" id="floral">
+
+      <div class="product-image product-one"></div>
+
+      <div class="product-info">
+
+        <div>
+          <h3>ROSE No. 01</h3>
+          <p>Jasmin · Rose · Vanille</p>
+        </div>
+
+        <strong>29,90 €</strong>
+
+      </div>
+
+      <button onclick="add('ROSE No. 01', 29.90)">
+        In den Warenkorb
       </button>
 
-    </form>
+    </article>
 
-  </section>
+
+    <article class="product" id="woody">
+
+      <div class="product-image product-two"></div>
+
+      <div class="product-info">
+
+        <div>
+          <h3>BLOOM</h3>
+          <p>Blüten · Baumwolle · Moschus</p>
+        </div>
+
+        <strong>34,90 €</strong>
+
+      </div>
+
+      <button onclick="add('BLOOM', 34.90)">
+        In den Warenkorb
+      </button>
+
+    </article>
+
+
+    <article class="product" id="fruity">
+
+      <div class="product-image product-three"></div>
+
+      <div class="product-info">
+
+        <div>
+          <h3>SIGNATURE</h3>
+          <p>Amber · Vanille · Musk</p>
+        </div>
+
+        <strong>39,90 €</strong>
+
+      </div>
+
+      <button onclick="add('SIGNATURE', 39.90)">
+        In den Warenkorb
+      </button>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<section id="story" class="story">
+
+  <div class="story-image"></div>
+
+  <div class="story-copy">
+
+    <p class="eyebrow">
+      THE MELORA IDEA
+    </p>
+
+    <h2>
+      Made by hand.
+      <br>
+      Made to be seen.
+    </h2>
+
+    <p>
+      MELORA CANDLES verbindet Form, Duft und
+      Atmosphäre zu besonderen Objekten für dein Zuhause.
+    </p>
+
+    <p>
+      Jede Kerze soll nicht einfach nur brennen.
+      Sie soll einen Raum verändern.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="instagram">
+
+  <p class="eyebrow">
+    FOLLOW MELORA
+  </p>
+
+  <h2>
+    @melora.candles
+  </h2>
+
+  <p>
+    Inspiration, neue Düfte und Einblicke hinter den Kulissen.
+  </p>
+
+  <a class="button"
+     href="https://www.instagram.com/melora.candles/"
+     target="_blank">
+    Instagram öffnen
+  </a>
+
+</section>
+
+
+<section id="contact" class="newsletter">
+
+  <p class="eyebrow">
+    STAY IN THE LIGHT
+  </p>
+
+  <h2>
+    Something beautiful is coming.
+  </h2>
+
+  <p>
+    Trag dich ein und erfahre als Erste:r
+    von neuen MELORA CANDLES Kollektionen.
+  </p>
+
+  <form onsubmit="event.preventDefault(); alert('Demo: Newsletter-Anmeldung');">
+
+    <input
+      type="email"
+      placeholder="E-Mail-Adresse"
+      required>
+
+    <button class="button" type="submit">
+      Anmelden
+    </button>
+
+  </form>
+
+</section>
 
 </main>
 
 
 <aside id="cart" class="cart">
 
-  <button class="close" onclick="toggleCart()">×</button>
+  <button class="close" onclick="toggleCart()">
+    ×
+  </button>
 
-  <p class="eyebrow">YOUR BAG</p>
+  <p class="eyebrow">
+    MELORA CANDLES
+  </p>
 
-  <h2>Warenkorb</h2>
+  <h2>
+    Dein Warenkorb
+  </h2>
 
   <div id="items">
     <p>Dein Warenkorb ist leer.</p>
   </div>
 
   <div class="total">
-    <span>Total</span>
-    <strong id="total">0,00 €</strong>
+
+    <span>Gesamt</span>
+
+    <strong id="total">
+      0,00 €
+    </strong>
+
   </div>
 
   <button
     class="button full"
-    onclick="alert('Demo: Checkout kommt später.')"
-  >
-    Checkout
+    onclick="alert('Demo: Checkout – Zahlung und Bestellung sind noch nicht aktiviert.')">
+
+    Zur Kasse
+
   </button>
+
+  <p class="demo-note">
+    Demo-Shop – aktuell sind keine echten Bestellungen möglich.
+  </p>
 
 </aside>
 
 
 <footer>
 
-  <div class="footer-brand">MELORA</div>
+  <div class="footer-brand">
+    MELORA
+    <small>CANDLES</small>
+  </div>
+
+  <div class="footer-links">
+
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">Versand</a>
+    <a href="#">Kontakt</a>
+
+  </div>
 
   <p>
-    Handcrafted candles · Demo concept 2026
+    © 2026 MELORA CANDLES · Demo Concept
   </p>
 
 </footer>
