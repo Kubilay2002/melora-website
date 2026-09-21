@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="MELORA CANDLES – handgefertigte Kerzen und besondere Düfte.">
+
+  <title>MELORA CANDLES – Produkt</title>
+
+  <link rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <a class="brand" href="index.html">
+
+    MELORA
+
+    <small>CANDLES</small>
+
+  </a>
+
+
+  <nav>
+
+    <a href="index.html#collection">
+      Kollektion
+    </a>
+
+    <a href="index.html#story">
+      Über uns
+    </a>
+
+    <a href="index.html#contact">
+      Kontakt
+    </a>
+
+  </nav>
+
+
+  <button class="cart-toggle"
+          onclick="toggleCart()">
+
+    Warenkorb
+
+    <span id="count">0</span>
+
+  </button>
+
+</header>
+
+
+
+<main>
+
+
+<section class="product-detail">
+
+
+  <div class="product-detail-image"
+       id="productImage">
+  </div>
+
+
+
+  <div class="product-detail-info">
+
+
+    <p class="eyebrow"
+       id="productCategory">
+
+      MELORA CANDLES
+
+    </p>
+
+
+    <h1 id="productName">
+      ROSE No. 01
+    </h1>
+
+
+    <p class="product-detail-price"
+       id="productPrice">
+
+      29,90 €
+
+    </p>
+
+
+    <div class="product-line"></div>
+
+
+    <p class="product-detail-description"
+       id="productDescription">
+
+      Eine elegante, florale Kerze mit
+      feinen Noten von Rose, Jasmin und
+      warmer Vanille.
+
+    </p>
+
+
+    <div class="product-details-list">
+
+      <div>
+
+        <span>Duft</span>
+
+        <strong id="productScent">
+          Rose · Jasmin · Vanille
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>Brenndauer</span>
+
+        <strong>
+          ca. 35 Stunden
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span>Herstellung</span>
+
+        <strong>
+          Handgefertigt
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="button product-add"
+      id="productAddButton">
+
+      In den Warenkorb
+
+    </button>
+
+
+    <a
+      class="back-link"
+      href="index.html#collection">
+
+      ← Zurück zur Kollektion
+
+    </a>
+
+
+  </div>
+
+</section>
+
+
+<section class="product-story">
+
+  <p class="eyebrow">
+    THE MELORA EXPERIENCE
+  </p>
+
+  <h2>
+    Ein Duft.
+    <br>
+    Eine Atmosphäre.
+    <br>
+    Dein Moment.
+  </h2>
+
+  <p>
+    MELORA CANDLES wurde für Menschen
+    entwickelt, die aus ihrem Zuhause
+    etwas Besonderes machen möchten.
+  </p>
+
+</section>
+
+
+</main>
+
+
+
+<aside id="cart"
+       class="cart">
+
+  <button class="close"
+          onclick="toggleCart()">
+
+    ×
+
+  </button>
+
+
+  <p class="eyebrow">
+    MELORA CANDLES
+  </p>
+
+
+  <h2>
+    Dein Warenkorb
+  </h2>
+
+
+  <div id="items">
+
+    <p>
+      Dein Warenkorb ist leer.
+    </p>
+
+  </div>
+
+
+  <div class="total">
+
+    <span>
+      Gesamt
+    </span>
+
+    <strong id="total">
+      0,00 €
+    </strong>
+
+  </div>
+
+
+  <button
+    class="button full"
+    onclick="alert('Demo: Checkout – Zahlung und Bestellung sind noch nicht aktiviert.')">
+
+    Zur Kasse
+
+  </button>
+
+
+  <p class="demo-note">
+
+    Demo-Shop – aktuell sind keine
+    echten Bestellungen möglich.
+
+  </p>
+
+</aside>
+
+
+
+<footer>
+
+  <div class="footer-brand">
+
+    MELORA
+
+    <small>
+      CANDLES
+    </small>
+
+  </div>
+
+
+  <div class="footer-links">
+
+    <a href="#">
+      Impressum
+    </a>
+
+    <a href="#">
+      Datenschutz
+    </a>
+
+    <a href="#">
+      Versand
+    </a>
+
+    <a href="#">
+      Kontakt
+    </a>
+
+  </div>
+
+
+  <p>
+    © 2026 MELORA CANDLES · Demo Concept
+  </p>
+
+</footer>
+
+
+
+<script src="js/app.js"></script>
+
+
+<script>
+
+const products = {
+
+  rose: {
+
+    name: "ROSE No. 01",
+
+    price: 29.90,
+
+    category: "FLORAL COLLECTION",
+
+    scent: "Rose · Jasmin · Vanille",
+
+    description:
+      "Eine elegante, florale Kerze mit feinen Noten von Rose, Jasmin und warmer Vanille. Zart, feminin und zeitlos.",
+
+    image:
+      "https://images.unsplash.com/photo-1602523961358-f9f03dd557db?auto=format&fit=crop&w=1400&q=90"
+
+  },
+
+
+  bloom: {
+
+    name: "BLOOM",
+
+    price: 34.90,
+
+    category: "FLORAL COLLECTION",
+
+    scent: "Blüten · Baumwolle · Moschus",
+
+    description:
+      "Ein weicher, sauberer Duft mit blumigen Noten und einem eleganten Hauch von Baumwolle und Moschus.",
+
+    image:
+      "https://images.unsplash.com/photo-1602874801006-e26d3fbead2b?auto=format&fit=crop&w=1400&q=90"
+
+  },
+
+
+  signature: {
+
+    name: "SIGNATURE",
+
+    price: 39.90,
+
+    category: "SIGNATURE COLLECTION",
+
+    scent: "Amber · Vanille · Musk",
+
+    description:
+      "Ein warmer und luxuriöser Duft. Amber, cremige Vanille und sanfter Musk ergeben eine elegante Atmosphäre.",
+
+    image:
+      "https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1400&q=90"
+
+  }
+
+};
+
+
+const params =
+  new URLSearchParams(window.location.search);
+
+
+const productKey =
+  params.get("product") || "rose";
+
+
+const product =
+  products[productKey] || products.rose;
+
+
+document.getElementById("productName")
+  .textContent = product.name;
+
+
+document.getElementById("productPrice")
+  .textContent =
+    product.price.toFixed(2).replace(".", ",") + " €";
+
+
+document.getElementById("productCategory")
+  .textContent = product.category;
+
+
+document.getElementById("productScent")
+  .textContent = product.scent;
+
+
+document.getElementById("productDescription")
+  .textContent = product.description;
+
+
+document.getElementById("productImage")
+  .style.backgroundImage =
+    `url("${product.image}")`;
+
+
+document.getElementById("productAddButton")
+  .onclick = function() {
+
+    add(product.name, product.price);
+
+  };
+
+
+document.title =
+  "MELORA CANDLES – " + product.name;
+
+</script>
+
+
+</body>
+
+</html>
