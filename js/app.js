@@ -3,7 +3,29 @@
    SHOPPING CART
    ===================================================== */
 
-let cart = [];
+
+/* =====================================================
+   LOAD CART
+   ===================================================== */
+
+let cart =
+  JSON.parse(
+    localStorage.getItem("meloraCart")
+  ) || [];
+
+
+/* =====================================================
+   SAVE CART
+   ===================================================== */
+
+function saveCart() {
+
+  localStorage.setItem(
+    "meloraCart",
+    JSON.stringify(cart)
+  );
+
+}
 
 
 /* =====================================================
@@ -12,9 +34,11 @@ let cart = [];
 
 function add(name, price) {
 
-  const existingProduct = cart.find(
-    item => item.name === name
-  );
+  const existingProduct =
+    cart.find(
+      item => item.name === name
+    );
+
 
   if (existingProduct) {
 
@@ -32,9 +56,13 @@ function add(name, price) {
 
   }
 
+
+  saveCart();
+
   updateCart();
 
   openCart();
+
 }
 
 
@@ -44,23 +72,32 @@ function add(name, price) {
 
 function decrease(name) {
 
-  const product = cart.find(
-    item => item.name === name
-  );
+  const product =
+    cart.find(
+      item => item.name === name
+    );
+
 
   if (!product) return;
 
+
   product.quantity -= 1;
+
 
   if (product.quantity <= 0) {
 
-    cart = cart.filter(
-      item => item.name !== name
-    );
+    cart =
+      cart.filter(
+        item => item.name !== name
+      );
 
   }
 
+
+  saveCart();
+
   updateCart();
+
 }
 
 
@@ -70,11 +107,16 @@ function decrease(name) {
 
 function removeItem(name) {
 
-  cart = cart.filter(
-    item => item.name !== name
-  );
+  cart =
+    cart.filter(
+      item => item.name !== name
+    );
+
+
+  saveCart();
 
   updateCart();
+
 }
 
 
@@ -94,37 +136,45 @@ function updateCart() {
     document.getElementById("total");
 
 
-  if (!itemsContainer ||
-      !countElement ||
-      !totalElement) {
+  if (
+    !itemsContainer ||
+    !countElement ||
+    !totalElement
+  ) {
 
     return;
 
   }
 
 
-  /* -------------------------
+  /* -----------------------------------------------------
      EMPTY CART
-     ------------------------- */
+     ----------------------------------------------------- */
 
   if (cart.length === 0) {
 
     itemsContainer.innerHTML = `
-      <p>Dein Warenkorb ist leer.</p>
+      <p>
+        Dein Warenkorb ist leer.
+      </p>
     `;
+
 
     countElement.textContent = "0";
 
-    totalElement.textContent = "0,00 €";
+
+    totalElement.textContent =
+      "0,00 €";
+
 
     return;
 
   }
 
 
-  /* -------------------------
-     PRODUCTS
-     ------------------------- */
+  /* -----------------------------------------------------
+     CALCULATE TOTAL
+     ----------------------------------------------------- */
 
   let total = 0;
 
@@ -136,8 +186,10 @@ function updateCart() {
 
   cart.forEach(product => {
 
+
     const productTotal =
-      product.price * product.quantity;
+      product.price *
+      product.quantity;
 
 
     total += productTotal;
@@ -145,9 +197,16 @@ function updateCart() {
     itemCount += product.quantity;
 
 
-    const item = document.createElement("div");
+    /* ---------------------------------------------------
+       CART ITEM
+       --------------------------------------------------- */
 
-    item.className = "cart-item";
+    const item =
+      document.createElement("div");
+
+
+    item.className =
+      "cart-item";
 
 
     item.innerHTML = `
@@ -159,9 +218,15 @@ function updateCart() {
         </h4>
 
         <p>
-          ${product.price.toFixed(2).replace(".", ",")} €
+
+          ${product.price
+            .toFixed(2)
+            .replace(".", ",")} €
+
           ×
+
           ${product.quantity}
+
         </p>
 
 
@@ -199,22 +264,23 @@ function updateCart() {
   });
 
 
-  /* -------------------------
+  /* -----------------------------------------------------
      CART COUNT
-     ------------------------- */
+     ----------------------------------------------------- */
 
   countElement.textContent =
     itemCount;
 
 
-  /* -------------------------
+  /* -----------------------------------------------------
      TOTAL
-     ------------------------- */
+     ----------------------------------------------------- */
 
   totalElement.textContent =
     total
       .toFixed(2)
-      .replace(".", ",") + " €";
+      .replace(".", ",") +
+    " €";
 
 }
 
@@ -228,21 +294,33 @@ function toggleCart() {
   const cartElement =
     document.getElementById("cart");
 
+
   if (!cartElement) return;
 
-  cartElement.classList.toggle("open");
+
+  cartElement.classList.toggle(
+    "open"
+  );
 
 }
 
+
+/* =====================================================
+   OPEN CART
+   ===================================================== */
 
 function openCart() {
 
   const cartElement =
     document.getElementById("cart");
 
+
   if (!cartElement) return;
 
-  cartElement.classList.add("open");
+
+  cartElement.classList.add(
+    "open"
+  );
 
 }
 
